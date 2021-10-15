@@ -1,0 +1,171 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <!-- form start -->
+          <form action="/teacherGroupStudent/students/edit/{{student._id}}" method="POST">
+            <div class="card-body">
+              
+              <div class="form-group">
+                <label for="fullname">ФИ студента</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullname"
+                  placeholder="Student fullname"
+                  name="fullname"
+                  value="{{student.fullname}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="payment">Оплата студента</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="payment"
+                  placeholder="Student payment"
+                  name="payment"
+                  value="{{student.payment}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="mark">Перекличка студента</label>
+               <div class="checkboxes" id="checkboxes" style="display: flex; flex-wrap:wrap;">
+                  <input
+                  type="checkbox"
+                  name="1"
+                   {{#ifeq student.muster 1}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="2"
+                  {{#ifeq student.muster 2}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="3"
+                  {{#ifeq student.muster 3}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="4"
+                  {{#ifeq student.muster 4}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="5"
+                  {{#ifeq student.muster 5}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="6"
+                  {{#ifeq student.muster 6}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="7"
+                  {{#ifeq student.muster 7}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="8"
+                  {{#ifeq student.muster 8}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="9"
+                  {{#ifeq student.muster 9}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="10"
+                  {{#ifeq student.muster 10}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="11"
+                  {{#ifeq student.muster 11}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="12"
+                  {{#ifeq student.muster 12}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="13"
+                  {{#ifeq student.muster 13}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="14"
+                  {{#ifeq student.muster 14}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="15"
+                  {{#ifeq student.muster 15}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="16"
+                  {{#ifeq student.muster 15}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="17"
+                  {{#ifeq student.muster 15}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="18"
+                  {{#ifeq student.muster 18}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="19"
+                  {{#ifeq student.muster 19}}checked{{/ifeq}}
+                />
+                <input
+                  type="checkbox"
+                  name="20"
+                  {{#ifeq student.muster 20}}checked{{/ifeq}}
+                />
+               </div>
+              </div>
+              <div class="form-group">
+                <label for="comment">Comment</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="comment"
+                  placeholder="Comment"
+                  name="comment"
+                  value="{{student.comment}}"
+                />
+              </div>
+             
+              <div class="form-group">
+                <label>Student group</label>
+                <select name="groupId" class="form-control">
+                  {{#each groups}}
+                  <option value="{{_id}}" id="{{_id}}" {{#sel _id @root.student.groupId}} {{/sel}}>{{title}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="submit" class="btn btn-create-student">Редактировать</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+  </div>
+</div>

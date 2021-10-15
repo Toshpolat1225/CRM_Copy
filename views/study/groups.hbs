@@ -1,0 +1,59 @@
+<div class="card studyCard">
+ 
+  <div class="card-body p-0">
+    <table class="table">
+      <thead>
+        <tr class="study-table-header">
+          <th style="width: 1%">
+            №
+          </th>
+          <th style="width: 20%" >
+            Группы 
+            <span class="projectMiniName"></span>
+          </th>
+          <th style="width: 30%">
+            Месяц | создана
+          </th>
+          
+
+          <th  style="width: 20%">
+            Редактировать
+          </th>
+        </tr>
+      </thead>
+        <tbody>
+        {{#each groups}}
+            <tr style="background: transparent;" class="teacher-table">
+            <td class="rtab" style="width: 1%">1.</td>
+            <td style="width: 40%"><a class="group-title-link" href="/study/groups/{{_id}}">{{title}}</a></td>
+            <td style="width: 40%"><div class="month_group" style="display: flex;align-items: center;"><p style="margin: 0;margin-right: 10px; font-weight: 600; "> {{actualMonth}}-месяц</p><hr class="month__split"></hr><p class="dateGroup" style="margin: 0;margin-left: 10px;">{{timeLesson}}</p></div></td>
+            <td style="width: 20%">
+               <div class="icons" style="display: flex; gap: 20px;">
+                    <a  href="/teacherGroupStudent/groups/delete/{{_id}}" style="color: #374045; font-size: 20px;"><i class="fal fa-times"></i></a>
+                    <a href="/teacherGroupStudent/groups/edit/{{_id}}" style="color: #374045; font-size: 18px;"><i class="fal fa-edit"></i></a>
+                  </div>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      
+    </table>
+  </div>
+</div>
+
+
+<script>
+  function toDate(date){
+  return new Intl.DateTimeFormat('ru-Ru',{
+    year: 'numeric',
+    day:'2-digit',
+    month: 'short',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(new Date(date))
+}
+document.querySelectorAll('.dateGroup').forEach( c => c.innerHTML = toDate(c.textContent))
+
+  document.querySelectorAll('.rtab').forEach((c,i) => c.innerHTML = i + 1 + '.'
+  )
+</script>

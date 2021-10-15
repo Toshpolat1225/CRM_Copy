@@ -1,0 +1,43 @@
+<div class="row justify-content-center m-0">
+  <div class="col-12">
+    <div class="card-body ">
+      <div id="accordion">
+        {{#if project.length}}
+        {{#each project}}
+        <div class="card-t" style="background: #f9f9f9; border: none; border-radius: 0;
+        box-shadow: 0 0px 15px #ccc;">
+          <div class="card-header cardHeader d-flex align-items-center collapsed" data-toggle="collapse"
+            style="background: #f9f9f9;" aria-expanded="false" href="#a{{id}}">
+            <h4 class="card-title w-100">
+              <a class="d-block black cardLink ">
+                {{name}}
+            </h4>
+            </a>
+            <h3 class="price projectPrice">{{price}}</h3>
+            </h4>
+            {{#iftr @root.isadmin @root.ismanager}}
+            <a class="priceIcons" style="color: #787a91;" href="/price/edit/{{id}}"><i class="fal fa-edit"></i></a>
+            <a class="priceIcons" style="color: #FF4C29;" href="/price/delete/{{id}}"><i
+                class="fal fa-trash-alt"></i></a>
+            {{/iftr}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true" />
+          </div>
+        </div>
+        <div id="a{{id}}" class="collapse" data-parent="#accordion" />
+        <div class="card-body" style="background: #f9f9f9;">
+          <ol class="price-list">
+            {{#each allInfo}}
+            <li class="listText">{{text}}</li>
+            {{/each}}
+          </ol>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    {{/if}}
+  </div>
+</div>
+</div>
+</div>

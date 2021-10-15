@@ -1,0 +1,71 @@
+{{#if salary.length}}
+  <div class="row justify-content-center align-content-center">
+    <div class="col-12 table-responsive salary-table">
+      <table
+        class="table table-striped text-center align-content-center justify-content-between salary-Tmargin"
+      >
+        <thead>
+          <tr class="salary-Trhegiht">
+            <th class="text-center pl-md-4 tr_num" style="width: 5%;">№</th>
+            <th class="tr_num" style="width: 20%;">ФИО</th>
+            <th class="tr_num" style="width: 15%;">Прошлая зарплата</th>
+            <th class="tr_num" style="width: 15%;">Следующая зарплата</th>
+            <th class="tr_num" style="width: 15%;">Сумма</th>
+            {{#iftr isadmin ismanager}}
+              <th class="tr_num" style="width: 20%;">Действия</th>
+            {{/iftr}}
+          </tr>
+        </thead>
+        <tbody class="salary-Trbody">
+          {{#each salary}}
+            <tr class="salary-transparent">
+
+              <td class="salary-td">
+                <ul class="d-flex justify-content-center">
+                  <span class="numbers"></span>
+                </ul>
+              </td>
+
+              <td class="salary-td">
+                <p class="name salary-text">{{name}}</p>
+              </td>
+              <td class="salary-td">
+                <p class="data_old salary-text">{{dateOld}}</p>
+              </td>
+              <td class="salary-td">
+                <p class="data_new salary-text">{{date}}</p>
+              </td>
+              <td class="salary-td">
+                <p class="price salary-text">{{price}}</p>
+              </td>
+              {{#iftr @root.isadmin @root.ismanager}}
+                <td class="d-flex justify-content-center salary-td">
+                  <div class="row d-flex justify-content-between">
+                    <a
+                      class="btn btn-primary btnEdit salary-btn"
+                      href="/salary/{{id}}/edit?allow=true"
+                    ><i class="fal fa-pencil-alt"></i></a>
+                    <form action="/salary/remove" method="POST">
+                      <input
+                        type="hidden"
+                        name="_csrf"
+                        value="{{csrf}}"
+                        id="csrf"
+                      />
+                      <input type="hidden" value="{{id}}" name="id" id="id" />
+                      <button class="btn btn-danger btnEdit m-lg salary-btn"><i
+                          class="fal fa-trash-alt"
+                        ></i></button>
+                    </form>
+                  </div>
+                </td>
+              {{/iftr}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{{else}}
+  <p>Вы еще не добавили зарплату!</p>
+{{/if}}

@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+  <div class="col-sm-8 col-md-6 justify-content-start align-items-center mt-5 asd1233213">
+    <div class="card card-primary1">
+      <form action="/library/add" method="POST" enctype="multipart/form-data">
+        <div class="card-header addlesson " style="padding-bottom: 2rem;">
+          <h3 class="card-title ">Создать библиотеку</h3>
+        </div>
+        <div class="card-body bodyes">
+          <div class="form-group form123">
+            <label class="library-title choose" for="name">Библиотека</label>
+            <input type="text" class="form-control inp1" id="name" placeholder="название" name="name" required />
+          </div>
+          <div class="form-group form123">
+            <label class="library-title choose" for="img">Картинка</label>
+            <div class="input-group">
+              <div class="custom-file ">
+                <input type="file" class="custom-file-input " id="img" name="img" />
+                <label class="custom-file-label inp1 fileLabel" for="img"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer submit">
+          <button type="submit" class="buttonSubmit">Создать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

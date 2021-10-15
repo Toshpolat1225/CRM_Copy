@@ -1,0 +1,75 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/payment.css" />
+</head>
+
+<h2 style="margin-left: 30px;"># Ежемесячные платежи</h2>
+
+<ol class="monthMenu">
+  <li class="monthItem">
+    <span class="text">№</span>
+    <strong class="text">Сумма (UZS)</strong>
+    <p class="text">Время добавление</p>
+    <p class="text">Описание</p>
+    <p class="text">Учитель</p>
+    <p class="text group">Группа</p>
+    <p class="text">Ученики</p>
+    <div class="icons">
+      <a href="#">
+        <i class="fal fa-times"></i>
+      </a>
+      <a href="#">
+        <i class="fal fa-edit"></i>
+      </a>
+    </div>
+  </li>
+  {{#each archive}}
+    <li class="monthItem">
+      <span class="lNum">1.</span>
+      <strong class="dailyPayment">{{payment}}</strong>
+      <p class="text">{{time}}</p>
+      <p class="text">{{description}}</p>
+      {{#if teacher}}
+        <p class="text">{{teacher}}</p>
+      {{else}}
+        <p class="aboutIncm">(расход)</p>
+      {{/if}}
+      <p class="text group">{{group}}</p>
+      <p class="text">{{student}}</p>
+      <div class="icons">
+        {{#if teacher}}
+          <a href="/payment/daily/expense/delete/{{id}}">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="/payment/daily/expense/edit/{{id}}">
+            <i class="fal fa-edit"></i>
+          </a>
+        {{else}}
+          <a href="/payment/daily/delete/{{id}}">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="/payment/daily/edit/{{id}}">
+            <i class="fal fa-edit"></i>
+          </a>
+        {{/if}}
+      </div>
+    </li>
+  {{/each}}
+</ol>
+
+<div
+  style="display: flex;padding: 0 30px; padding-bottom: 30px;padding-top: 35px;"
+>
+  <div class="totalIncome">
+    Общие расходы -
+    <h3 class="dailyPayment">{{totalIncome}}</h3>
+  </div>
+  <div class="totalExpense" style="margin-left: 35px;">
+    Общие доходы -
+    <h3 class="dailyPayment">{{totalExpense}}</h3>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.lNum').forEach((c,i) => c.innerHTML = i + 1 + '.'
+  )
+</script>

@@ -1,0 +1,133 @@
+<div class="card viewProjectCard">
+  <div class="card-header cardHeader">
+    <h3 class="card-title">О проекте</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-9 order-2 order-md-1 mt-5 mt-lg-0">
+        <div class="row">
+          <div class="col-12 col-sm-4">
+            <div class="info-box infoBox">
+              <div class="info-box-content">
+                <span class="info-box-text text-center text-muted">
+                  Дата создания</span>
+                <span
+                  class="info-box-number text-center text-muted mb-0"
+                >{{project.date}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="info-box infoBox">
+              <div class="info-box-content">
+                <span
+                  class="info-box-text text-center text-muted"
+                >Дедлайн</span>
+                <span
+                  class="info-box-number text-center text-muted mb-0 project_deadline"
+                >{{project.deadline}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="info-box infoBox">
+              <div class="info-box-content">
+                <span class="info-box-text text-center text-muted">Срок проекта
+                </span>
+                <span
+                  style="display: none;"
+                  class="project_date"
+                >{{project.date}}</span>
+                <span class="info-box-number text-center text-muted mb-0">
+                  <div id="timer_wrap">
+                    <div id="clock" style="margin-top: 0;">
+                      <div id="day">
+                        <p id="day0" class="clockText"></p>
+                        <p id="day1" class="clockText"></p>
+                      </div>
+                      <div id="razd">
+                        :
+                      </div>
+                      <div id="hour">
+                        <p id="hour0" class="clockText"></p>
+                        <p id="hour1" class="clockText"></p>
+                      </div>
+                      <div id="razd">
+                        :
+                      </div>
+                      <div id="min">
+                        <p id="min0" class="clockText"></p>
+                        <p id="min1" class="clockText"></p>
+                      </div>
+                      <div id="razd">
+                        :
+                      </div>
+                      <div id="sec">
+                        <p id="sec0" class="clockText"></p>
+                        <p id="sec1" class="clockText"></p>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 viewCol col-md-12text_list">
+            <h3 class="text"><i class="fal fa-project-diagram"></i>
+              {{project.name}}</h3>
+            <br />
+            <div class="text-muted">
+              <p class="text">Описание проекта
+                <b class="d-block">{{project.description}}</b>
+              </p>
+              <p class="text">Лидер проекта
+                <b class="d-block">{{project.leader}}</b>
+              </p>
+              <p class="text">Телеграм группа
+                <b class="d-block"><a
+                    href="{{project.telegram}}"
+                  >{{project.telegram}}</a></b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-3 order-1 order-md-2 mt-5 mt-lg-0">
+        <h4
+          style="border-bottom: 1px solid #adb5bd; margin-bottom: 14px;padding-bottom: 15px; color: #555555;"
+        >Проект для стажеров</h4>
+        {{#if project.works}}
+          {{#each project.works}}
+            {{#if worker}}
+              <div class="post" style="border:none ;">
+                <div
+                  class="user-block"
+                  style="justify-content: space-between; margin-bottom: 14px;border-bottom: 1px solid #adb5bd; padding-bottom: 14px;"
+                >
+                  <img
+                    class="img-circle img-bordered-sm workerImg"
+                    style="position: unset;
+                    transform: unset;"
+                    src="/images/{{worker.avatar}}"
+                  />
+                  <a
+                    style="display: inline-block; width: 240px;"
+                    href="/workers/{{worker.id}}"
+                  >
+                    <span class="username" style="margin-left: 0;">
+                      {{worker.fullname}}
+                    </span>
+                  </a>
+                </div>
+              </div>
+            {{/if}}
+          {{/each}}
+        {{else}}
+          <p class="mt-3">Вы не добавили стажера!</p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

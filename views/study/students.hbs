@@ -1,0 +1,60 @@
+<div class="card studyCard">
+ 
+  <div class="card-body p-0">
+    <table class="table table-striped">
+      <thead>
+        <tr class="student-table-header">
+          <th style="width: 1%">
+            №
+          </th>
+          <th style="width: 19%">
+            Студенты 
+          </th>
+
+          <th style="width: 10%" >
+            Оплата
+          </th>
+
+          <th style="width: 30%" >
+            Перекличка
+          </th>
+
+          <th style="width: 30%">
+            Комментарий
+          </th>
+          <th style="width: 10%" >
+            Редактировать
+          </th>
+          
+
+          <th class="projectTableBtn" style="width: 20%">
+          </th>
+        </tr>
+      </thead>
+        <tbody>
+        {{#each students}}
+            <tr style="background: transparent;">
+            <td class="rtab " style="width: 1%">1.</td>
+            <td style="width: 19%"><p class="student__name student-title-link">{{fullname}}</p></td>
+            <td style="width: 20%"><p class="price student-payment">{{payment}}</p></td>
+            <td style="width: 30%"><p class="student__muster" >{{muster}}</p></td>
+            <td style="width: 20%" ><p class="student__comment">{{comment}}</p></td>
+            <td style="width: 10%">
+               <div class="icons" style="display: flex; gap: 20px;justify-content:center">
+                    <a href="/teacherGroupStudent/students/delete/{{_id}}" style="color: #374045; font-size: 20px;"><i class="fal fa-times"></i></a>
+                    <a href="/teacherGroupStudent/students/edit/{{_id}}" style="color: #374045; font-size: 18px;"><i class="fal fa-edit"></i></a>
+                  </div>
+            </td>
+            <td>{{phone}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      
+    </table>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.rtab').forEach((c,i) => c.innerHTML = i + 1 + '.'
+  )
+</script>

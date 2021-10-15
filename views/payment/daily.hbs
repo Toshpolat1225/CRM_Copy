@@ -1,0 +1,304 @@
+<head>
+    <link rel="stylesheet" href="/stylesheets/payment.css">
+</head>
+
+<div class="dailyContent createCard">
+    <h2 style="margin-top: 20px;"># Ежедневный расход</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-secondary">
+                <div class="card-header cardHeader">
+                    <h3 class="card-title">Расход</h3>
+                </div>
+                <div class="card-body">
+                    {{#if incomes}}
+                    <ul class="dailyMenu">
+                        {{#each incomes}}
+                        <li class="menuItem" style="list-style: none;">
+                            <p class="text" style="width: 40%;">{{description}}</p>
+                            <p class="text time" style="width: 30%;">{{time}}</p>
+                            <div class="itemLeft" style="width: 30%;display: flex;justify-content: space-between;">
+                                <strong class="dailyPayment">{{payment}}</strong>
+                                <div class="icons">
+                                    <a href="/payment/daily/delete/{{id}}"><i class="fal fa-times"></i></a>
+                                    <a href="/payment/daily/edit/{{id}}"><i class="fal fa-edit"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                        {{else}}
+                        <p>Сегодня нет расходов</p>
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-secondary">
+                {{#if income}}
+                <div class="card-header cardHeader">
+                    <h3 class="card-title">Изменить расход</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/payment/daily/edit" method="POST">
+                        <div class="form-group">
+                            <label for="inputDescription">Описание расхода</label>
+                            <textarea id="inputDescription" class="form-control" rows="3" required
+                                name="description">{{income.description}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment">Сумма расход</label>
+                            <input type="number" id="payment" class="form-control" name="payment"
+                                value="{{income.payment}}" required />
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 d-flex justify-content-center">
+                                <input type="hidden" name="id" value="{{income._id}}">
+                                <input style="width: 100%;" type="submit" value="Изменить"
+                                    class="btn btn-success float-right createBtn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{else}}
+                <div class="card-header cardHeader">
+                    <h3 class="card-title">Добавить расходы</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/payment/daily/add" method="POST">
+                        <div class="form-group">
+                            <label for="inputDescription">Описание расхода</label>
+                            <textarea id="inputDescription" class="form-control" rows="3" required
+                                name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment">Сумма расход</label>
+                            <input type="number" id="payment" class="form-control" name="payment" required />
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 d-flex justify-content-center">
+                                <input style="width: 100%;" type="submit" value="Добавить"
+                                    class="btn btn-success float-right createBtn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <h2 style="margin-top: 20px;"># Ежедневный доход</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-secondary">
+                <div class="card-header cardHeader">
+                    <h3 class="card-title">Доход</h3>
+                </div>
+                <div class="card-body">
+                    {{#if expenses}}
+                    <ul class="expenseMenu">
+                        {{#each expenses}}
+                        <li class="menuItem" style="list-style: none;">
+                            <div class="itemLeft">
+                                <strong class="dailyPayment">{{payment}}</strong>
+                                <div class="icons">
+                                    <a href="/payment/daily/expense/delete/{{id}}"><i class="fal fa-times"></i></a>
+                                    <a href="/payment/daily/expense/edit/{{id}}"><i class="fal fa-edit"></i></a>
+                                </div>
+                            </div>
+                            <p class="text">Учитель - {{teacher}}</p>
+                            <p class="text">Группа - {{group}}</p>
+                            <p class="text">Ученик - {{student}}</p>
+                            <p class="text">Описание - {{description}}</p>
+                            <p class="text time">{{time}}</p>
+                        </li>
+                        {{/each}}
+                        {{else}}
+                        <p>Сегодня нет доходов</p>
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-secondary">
+                {{#if expense}}
+                <div class="card-header cardHeader">
+                    <h3 class="card-title">Изменить доход</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/payment/daily/expense/edit" method="POST">
+                        <div class="form-group">
+                            <label for="teacher">Учитель</label>
+                            <select id="teacher" class="form-control custom-select" name="teacher">
+                                {{#each @root.teachers}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="group">Группа</label>
+                            <select id="group" class="form-control custom-select" name="group">
+                                {{#each @root.groups}}
+                                <option value="{{name}}">{{title}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="student">Ученик</label>
+                            <select id="student" class="form-control custom-select" name="student">
+                                {{#each students}}
+                                <option value="{{_id}}">{{fullname}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription">Описание расхода</label>
+                            <textarea id="inputDescription" class="form-control" rows="3" required
+                                name="description">{{expense.description}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment">Сумма расход</label>
+                            <input type="number" id="payment" class="form-control" name="payment"
+                                value="{{expense.payment}}" required />
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 d-flex justify-content-center">
+                                <input type="hidden" name="id" value="{{expense._id}}">
+                                <input style="width: 100%;" type="submit" value="Изменить"
+                                    class="btn btn-success float-right createBtn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{else}}
+                <div class="card-header cardHeader">
+                    <h3 class="card-title">Добавить доходы</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/payment/daily/expense/add" method="POST">
+                        <div class="form-group">
+                            <label for="teacher">Учитель</label>
+                            <select id="teacher" class="form-control custom-select" name="teacher">
+                                {{#each @root.teachers}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="group">Группа</label>
+                            <select id="group" class="form-control custom-select" name="group">
+                                {{#each @root.groups}}
+                                <option value="{{title}}">{{title}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="student">Ученик</label>
+                            <select id="student" class="form-control custom-select" name="student">
+                                {{#each @root.students}}
+                                <option value="{{_id}}">{{fullname}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription">Описание расхода</label>
+                            <textarea id="inputDescription" class="form-control" rows="3" required
+                                name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment">Сумма расход</label>
+                            <input type="number" id="payment" class="form-control" name="payment" required />
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 d-flex justify-content-center">
+                                <input style="width: 100%;" type="submit" value="Добавить"
+                                    class="btn btn-success float-right createBtn" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const teacher = document.querySelectorAll('#teacher')
+    const group = document.querySelectorAll('#group')
+    const student = document.querySelectorAll('#student')
+    const option = document.querySelectorAll('#teacher option')
+    fetch('/payment/study/content', {
+        method: 'GET'
+    })
+        .then(res => res.json())
+        .then(data => {
+            teacher.forEach(e => {
+                data.teachers.forEach(elem => {
+                    if (elem.name === e.value) {
+                        const groupHtml = document.querySelector('#group')
+                        const teachGroup = data.groups.filter(c => {
+                            return elem._id === c.teacherId
+                        })
+                        groupHtml.innerHTML = teachGroup.map(c => (
+                            `<option value="${c.title}">${c.title}</option>`
+                        ))
+                    }
+                })
+                e.addEventListener('click', () => {
+                    data.teachers.forEach(elem => {
+                        if (elem.name === e.value) {
+                            const groupHtml = document.querySelector('#group')
+                            const teachGroup = data.groups.filter(c => {
+                                return elem._id === c.teacherId
+                            })
+                            groupHtml.innerHTML = teachGroup.map(c => (
+                                `<option value="${c.title}">${c.title}</option>`
+                            ))
+                        }
+                        group.forEach(e => {
+                            data.groups.forEach(elem => {
+                                if (elem.title === e.value) {
+                                    const studentHtml = document.querySelector('#student')
+                                    const groupStudents = data.students.filter(c => {
+                                        return elem._id === c.groupId
+                                    })
+                                    studentHtml.innerHTML = groupStudents.map(c => (
+                                        `<option value="${c._id}">${c.fullname}</option>`
+                                    ))
+                                }
+                            })
+                        })
+                    })
+                })
+            })
+            group.forEach(e => {
+                data.groups.forEach(elem => {
+                    if (elem.title === e.value) {
+                        const studentHtml = document.querySelector('#student')
+                        const groupStudents = data.students.filter(c => {
+                            return elem._id === c.groupId
+                        })
+                        studentHtml.innerHTML = groupStudents.map(c => (
+                            `<option value="${c._id}">${c.fullname}</option>`
+                        ))
+                    }
+                })
+                e.addEventListener('click', () => {
+                    data.groups.forEach(elem => {
+                        if (elem.title === e.value) {
+                            const studentHtml = document.querySelector('#student')
+                            const groupStudents = data.students.filter(c => {
+                                return elem._id === c.groupId
+                            })
+                            studentHtml.innerHTML = groupStudents.map(c => (
+                                `<option value="${c._id}">${c.fullname}</option>`
+                            ))
+                        }
+                    })
+                })
+            })
+        })
+</script>

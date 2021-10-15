@@ -1,0 +1,145 @@
+{{#if workers.length}}
+  <div class="worker_all">
+    <div class="card-body">
+      <div class="row">
+        {{#each workers}}
+          <div
+            class="col-12 col-sm-6 col-lg-4 d-flex align-items-stretch flex-column"
+          >
+            <div
+              class="modal fade"
+              id="as{{_id}}"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content modalContent">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Удалить
+                      работника</h5>
+                    <button
+                      style="border: none; background: none;"
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ><i
+                        style="font-size: 22px;margin-top: 4px; color: #646464;"
+                        class="fal fa-times"
+                      ></i></button>
+                  </div>
+                  <div class="modal-body" style="text-align: center;">
+                    Вы уверены что хотите удалить этого работника!
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary closeBtn"
+                      data-bs-dismiss="modal"
+                    >Отменить</button>
+                    <a
+                      href="/workers/remove/{{id}}"
+                      class="btn btn-danger deleteBtn"
+                    >Удалить</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card d-flex flex-column worker_each">
+              <div
+                style="padding: 17px;"
+                class="card-header card_header border-bottom-0 d-flex worker_job_heading"
+              >
+                #{{job}}
+                {{#if @root.isadmin}}
+                  <div
+                    class="action__icons"
+                    style="display: flex;align-items: center;"
+                  >
+                    <a class="worker__edit" href="/workers/edit/{{id}}"><i
+                        style=" display: inline-flex; align-items: center;"
+                        class="fal fa-edit"
+                      ></i></a>
+
+                    <button
+                      style="border: none; background: transparent;"
+                      class="worker__remove"
+                      data-bs-toggle="modal"
+                      data-bs-target="#as{{_id}}"
+                    ><i
+                        style=" margin-left: 8px; margin-top: 3px;"
+                        class="fal fa-times"
+                      ></i></button>
+                  </div>
+                {{/if}}
+              </div>
+              <div class="card-body">
+                <div class="row" style="height: 100%;">
+                  <div class="col-7">
+                    <h2 class="lead worker__fullname"><b>{{fullname}}</b></h2>
+                    <p class="text-muted about_text text-sm"></p>
+                    <ul class="ml-4 mb-0 fa-ul worker-info-full">
+                      <li
+                        style="margin-bottom: 10px;"
+                        class="small worker__status"
+                      ><span class="iconas"><i
+                            class="fas fa-user-secret"
+                          ></i></span><b>Статус:
+                        </b>{{status}}</li>
+                      <li
+                        style="margin-bottom: 10px;"
+                        class="small worker__adress"
+                      ><span class="iconas"><i
+                            class="fas fa-lg fa-building"
+                          ></i></span>
+                        <b>Адрес:</b>
+                        {{address}}</li>
+                      <li
+                        style="margin-bottom: 10px;"
+                        class="small worker__phone"
+                      ><span class="iconas"><i
+                            class="fas fa-lg fa-phone"
+                          ></i></span>
+                        <b>Тел. #:</b>
+                        +998{{phone}}</li>
+                    </ul>
+                  </div>
+                  <div
+                    class="col-5 d-flex justify-content-center align-items-center"
+                  >
+                    <div class="worker_avatar">
+                      <img
+                        src="/images/{{avatar}}"
+                        alt="user-avatar"
+                        class="workerImg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="text-right">
+                  <a
+                    href="{{telegram}}"
+                    target="_blank"
+                    class="tg_btn"
+                    style="margin-right: 20px;"
+                  >
+                    <i class="fal fa-comments"></i>
+                  </a>
+                  <a href="/workers/{{id}} " class="view_btn">
+                    <i class="fal fa-user"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{else}}
+  <p class="no_workers">Вы еще не добавили работника!!!</p>
+{{/if}}
+

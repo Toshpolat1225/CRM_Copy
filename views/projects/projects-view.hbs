@@ -1,0 +1,163 @@
+<div class="card viewProjectCard">
+  <div class="card-header cardHeader">
+    <h3 class="card-title">Projects Detail</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-9 order-2 order-md-1 mt-5 mt-lg-0">
+        <div class="row">
+          <div class="col-12 col-sm-4">
+            <div class="info-box infoBox">
+              <div class="info-box-content">
+                <span class="info-box-text text-center text-muted">Project
+                  budget</span>
+                <span
+                  class="info-box-number text-center text-muted mb-0 price"
+                >{{project.totalPayment}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="info-box infoBox">
+              <div class="info-box-content">
+                <span class="info-box-text text-center text-muted">Project
+                  deadline</span>
+                <span
+                  class="info-box-number text-center text-muted mb-0 project_deadline"
+                >{{project.deadline}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="info-box infoBox">
+              <div class="info-box-content">
+                <span class="info-box-text text-center text-muted">Project time
+                  left</span>
+                <span
+                  style="display: none;"
+                  class="project_date"
+                >{{project.date}}</span>
+                <span class="info-box-number text-center text-muted mb-0">
+                  <div id="timer_wrap">
+                    <div id="clock" style="margin-top: 0;">
+                      <div id="day">
+                        <p id="day0" class="clockText"></p>
+                        <p id="day1" class="clockText"></p>
+                      </div>
+                      <div id="razd">
+                        :
+                      </div>
+                      <div id="hour">
+                        <p id="hour0" class="clockText"></p>
+                        <p id="hour1" class="clockText"></p>
+                      </div>
+                      <div id="razd">
+                        :
+                      </div>
+                      <div id="min">
+                        <p id="min0" class="clockText"></p>
+                        <p id="min1" class="clockText"></p>
+                      </div>
+                      <div id="razd">
+                        :
+                      </div>
+                      <div id="sec">
+                        <p id="sec0" class="clockText"></p>
+                        <p id="sec1" class="clockText"></p>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-12text_list">
+            <div class="row">
+              <div class="col-md-6 viewCol">
+                <h3 class="text"><i class="fal fa-project-diagram"></i>
+                  {{project.name}}</h3>
+                <br />
+                <div class="text-muted">
+                  <p class="text">Project description
+                    <b class="d-block">{{project.description}}</b>
+                  </p>
+                  <p class="text">Project Leader
+                    <b class="d-block">{{project.leader}}</b>
+                  </p>
+                  <p class="text">Telegram group
+                    <b class="d-block"><a
+                        href="{{project.telegram}}"
+                      >{{project.telegram}}</a></b>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 viewCol">
+                <h5 class="mt-5 text-muted">Client info</h5>
+                <ul class="list-unstyled text-muted text_list">
+                  <li>
+                    <p class="text">Client name
+                      <b class="d-block">{{project.clientName}}</b>
+                    </p>
+                  </li>
+                  <li>
+                    <p class="text">Client phone number
+                      <a
+                        style="color: #6c757d!important;"
+                        href="tel:{{project.clientNumber}}"
+                      ><b class="d-block">+{{project.clientNumber}}</b></a>
+                    </p>
+                  </li>
+                  <li>
+                    <p class="text">Client Location
+                      <b class="d-block">{{project.clientLocation}}</b>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-3 order-1 order-md-2 mt-5 mt-lg-0">
+        <h4
+          style="border-bottom: 1px solid #adb5bd; margin-bottom: 20px;padding-bottom: 15px; color: #555555;"
+        >Project workers</h4>
+        {{#if project.works}}
+          {{#each project.works}}
+            {{#if worker}}
+              <div class="post" style="border:none ;">
+                <div
+                  class="user-block"
+                  style="justify-content: space-between; margin-bottom: 20px;border-bottom: 1px solid #adb5bd; padding-bottom: 20px;"
+                >
+                  <img
+                    class="img-circle img-bordered-sm workerImg"
+                    style="position: unset;
+                    transform: unset;"
+                    src="/images/{{worker.avatar}}"
+                  />
+                  <a href="/workers/{{worker.id}}">
+                    <span class="username" style="margin-left: 0;">
+                      {{worker.fullname}}
+                    </span>
+                  </a>
+                  <div class="rightBox" style="margin-right: 15px;">
+                    <span style="font-size: 15px;">{{payment.parcent}} %</span>
+                    <p
+                      class="price"
+                      style="font-size: 16px; font-weight: 500;"
+                    >{{payment.workerPayment}}</p>
+                  </div>
+                </div>
+              </div>
+            {{/if}}
+          {{/each}}
+        {{else}}
+          <p class="mt-3">here is not any wrokers !</p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+const { Router } = require("express");
+const router = Router();
+const SalaryController = require("../../controller/SalaryController");
+const adminMan = require("../../middleware/adminManager");
+const adminManWor = require("../../middleware/adminManWor");
+router.get("/", adminManWor, SalaryController.getSalary);
+router.get("/add", adminMan, SalaryController.addSalary);
+router.get("/:id/edit", adminMan, SalaryController.editSalary);
+router.get("/add", adminMan, SalaryController.creatSalary);
+router.post("/worker/add", adminMan, SalaryController.creatSalaryPost);
+router.post("/edit", adminMan, SalaryController.editSalaryPost);
+router.post("/remove", adminMan, SalaryController.removeSalary);
+router.get("/worker", adminManWor, SalaryController.getWorkerSalary);
+module.exports = router;

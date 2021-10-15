@@ -1,0 +1,46 @@
+<div class="cardCategory" style="position: relative;:">
+  <ul
+    class="navbar-nav ml-auto"
+    style="position: absolute;top: -45px; right: 16px; font-size: 25px; z-index: 1;"
+  >
+    {{#if isadmin}}
+      <li class="nav-item">
+        <a class="nav-link" href="/lids/lidCategory/add">
+          <i style="color: #646464; font-size: 30px;" class="far fa-plus"></i>
+        </a>
+      </li>
+    {{/if}}
+  </ul>
+  {{#if lids.length}}
+    <div class="row">
+      {{#each lids}}
+        <div class="col-12 col-md-12">
+          <div class="card" style="border-radius: 0;background: #f9f9f9;">
+            <div
+              class="card-body d-flex justify-content-between worker_each"
+              style="height: 68px;"
+            >
+              <h5 class="card-title lidCategoryedit"><a
+                  style="color: #646464;"
+                  href="/lids/lidCategory/{{id}}"
+                >{{name}}</a>
+              </h5>
+              <div class="d-flex justify-content-between">
+                <a href="/lids/editCategory/{{id}}"><i
+                    style=" font-size: 19px; margin-top: 1px; display: inline-flex; align-items: center;"
+                    class="fal fa-edit lidCategoryedit"
+                  ></i></a>
+                <a href="/lids/deleteCategory/{{id}}"><i
+                    style="font-size: 24px; margin-left: 22px;"
+                    class="fal fa-times lidCategoryedit"
+                  ></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <h2>Тут пусто!</h2>
+  {{/if}}
+</div>

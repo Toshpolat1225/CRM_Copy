@@ -1,0 +1,59 @@
+<section class="content">
+
+  <!-- Default box -->
+  <div class="card card-solid">
+    <div class="card-body pb-0">
+
+      {{#if students.length}}
+
+        <div class="row">
+          {{#each students}}
+            <div
+              class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"
+            >
+              <div class="card bg-light d-flex flex-fill">
+                <div class="card-body pt-0">
+                  <div class="row flex-column">
+
+                    <h2 class="lead"><b>{{fullname}}</b></h2>
+                    <h4 class="text-muted text-sm"><b>Payment: </b>
+                      {{payment}}
+                    </h4>
+                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                      <li class="small">{{comment}}</li>
+                      <li class="small">Mark {{mark}}%</li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a
+                      href="/teacherGroupStudent/students/edit/{{id}}"
+                      class="btn btn-sm bg-teal"
+                    >
+                      <i class="far fa-edit"></i>
+                      Edit
+                    </a>
+                    <a
+                      href="/teacherGroupStudent/students/delete/{{id}}"
+                      class="btn btn-sm btn-primary"
+                    >
+                      <i class="far fa-trash-alt"></i>
+                      Delete
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <h2>Students is empty</h2>
+      {{/if}}
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+</section>

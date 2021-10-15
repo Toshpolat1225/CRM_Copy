@@ -1,0 +1,141 @@
+<div class="card worker__card createCard">
+  <div class="card-header worker__card_header">
+    <h3 class="add__worker_title mb-0">Редактировать</h3>
+  </div>
+  <div class="card-body">
+
+    <form action="/workers/edit" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 ">
+        <div class="form-group">
+          <label for="fullname">ФИО</label>
+          <input type="text" id="fullname" class="form-control" name="fullname" value="{{worker.fullname}}">
+        </div>
+         <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="Эл.почта"
+              value="{{worker.email}}"
+              required
+            />
+            <div class="input-group-append m-0">
+              <div
+                class="input-group-text"
+                style="border-radius: 0; box-shadow: 0px 0px 4px 1px #ccc; border:none; background: #f9f9f9;"
+              >
+                <span class="fal fa-envelope" style="color: #646464;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Пароль"
+              required
+            />
+            <div class="input-group-append m-0">
+              <div
+                class="input-group-text"
+                style="border-radius: 0; box-shadow: 0px 0px 4px 1px #ccc; border:none; background: #f9f9f9;"
+              >
+                <span class="fal fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="confirm"
+              placeholder="Пароль"
+              required
+            />
+            <div class="input-group-append m-0">
+              <div
+                class="input-group-text"
+                style="border-radius: 0; box-shadow: 0px 0px 4px 1px #ccc; border:none; background: #f9f9f9;"
+              >
+                <span class="fal fa-lock"></span>
+              </div>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="inputClientCompany">Профессия</label>
+          <input type="text" id="inputClientCompany" class="form-control" name="job" value="{{worker.job}}">
+        </div>
+        <div class="form-group">
+          <label for="inputDescription">Все о работнике</label>
+          <textarea id="inputDescription" class="form-control" rows="4" name="about"
+            style="resize: none;">{{worker.about}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="address">Адрес</label>
+          <input type="text" id="address" class="form-control" name="address" value="{{worker.address}}">
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="number" id="phone" minlength="8" min="1" class="form-control" name="phone"
+            value="{{worker.phone}}">
+        </div>
+        <div class="form-group">
+          <label for="education">Образование</label>
+          <input type="text" id="education" class="form-control" name="education" value="{{worker.education}}">
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="form-group">
+          <label for="skills">Навыки</label>
+          <input type="text" id="skills" class="form-control" name="skills" value="{{worker.skills}}">
+        </div>
+        <div class="form-group">
+          <label for="notes">Заметки</label>
+          <textarea id="notes" class="form-control" rows="4" name="notes"
+            style="resize: none;">{{worker.notes}}</textarea>
+        </div>
+        <div class="form-group">
+          <div class="custom-file">
+            <label for="avatar">Аватар</label>
+            <input type="file" class="custom-file-input" id="avatar" value="{{worker.avatar}}" name="avatar">
+            <label class="custom-file-label fileLabel" for="avatar">{{worker.avatar}}</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputClientCompany">Телеграм</label>
+          <input type="text" id="inputClientCompany" class="form-control" value="{{worker.telegram}}" name="telegram">
+        </div>
+        {{#unless isadmin}}
+        <input type="hidden" name="status" value="{{worker.status}}">
+        {{/unless}}
+
+
+       {{#if isadmin}}
+        <div class="form-group">
+          <label for="inputStatus">Статус</label>
+          <select id="inputStatus" class="form-control custom-select" value="{{worker.status}}" name="status">
+            <option value="Student" {{#if isStudent}} selected{{/if}}>Стажер</option>
+            <option value="Worker" {{#if isWorker}} selected{{/if}}>Работник</option>
+            <option value="Project manager" {{#if isManager}} selected{{/if}}>Проект менеджер</option>
+          </select>
+        </div>
+        {{/if}}
+        <input type="hidden" class="form-control" value="{{worker.id}}" name="id">
+      </div>
+    </div>
+    <div class="row mt-3 pb-5">
+        <div class="col-12 d-flex justify-content-center">
+          <input
+            style="width: 100%;"
+            type="submit"
+            value="Изменить"
+            class="btn btn-success float-right createBtn"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

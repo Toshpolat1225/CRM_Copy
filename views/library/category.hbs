@@ -1,0 +1,21 @@
+{{#if categories.length}}
+<div class="row justify-content-start mt-4">
+    {{#each categories}}
+    <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-3 mt-3">
+        <div class="card libraryborder">
+            <a href="/library/{{id}}" class="library__link"><img src="/images/{{img}}" class="card-img-top top"
+                    alt="{{name}}">
+                <h5 style="padding: 8px 25px;width: 100%; position: absolute; bottom: 0; left: 0; color: #fff; background: linear-gradient(rgba(197, 197, 197, 0.58 ),rgba(197, 197, 197, 0.58))"
+                    class="card-title libraryhref">{{name}}</h5>
+            </a>
+            {{#iftr @root.isadmin @root.ismanager}}
+            <a class="card-title left" href="/library/edit/{{id}}"><i class="fal fa-edit editicon"></i></a>
+            <a class="card-title right" href="/library/delete/{{id}}"><i class="fal fa-trash-alt"></i></a>
+            {{/iftr}}
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <h2>Библиотека пока пусто! </h2>
+</div>
+{{/if}}

@@ -1,0 +1,68 @@
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-solid">
+    <div class="card-body pb-0">
+
+      {{#if teachers.length}}
+
+        <div class="row">
+          {{#each teachers}}
+            <div
+              class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"
+            >
+              <div class="card bg-light d-flex flex-fill">
+                <div class="card-header text-muted border-bottom-0">
+                  {{job}}
+                </div>
+                <div class="card-body pt-0">
+                  <div class="row flex-column">
+
+                    <h2 class="lead"><b><a
+                          href="/teacherGroupStudent/teachers/{{id}}"
+                        >{{name}}</a></b></h2>
+                    <h4 class="text-muted text-sm"><b>Salary: </b>
+                      {{salary}}
+                    </h4>
+                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                      
+                      <li class="small"><span class="fa-li"><i
+                            class="fas fa-lg fa-phone"
+                          ></i></span>
+                        Phone:
+                        {{phone}}</li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a
+                      href="/teacherGroupStudent/teachers/edit/{{id}}"
+                      class="btn btn-sm bg-teal"
+                    >
+                      <i class="far fa-edit"></i>
+                      Edit
+                    </a>
+                    <a
+                      href="/teacherGroupStudent/teachers/delete/{{id}}"
+                      class="btn btn-sm btn-primary"
+                    >
+                      <i class="far fa-trash-alt"></i>
+                      Delete
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <h2>Teachers is empty</h2>
+      {{/if}}
+
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+</section>

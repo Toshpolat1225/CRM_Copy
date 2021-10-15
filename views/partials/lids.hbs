@@ -1,0 +1,297 @@
+<div style="position: relative; background:#f9f9f9">
+  <nav
+    style="margin: 0;z-index: auto; background:#f9f9f9"
+    class="main-header navbar navbar-expand navbar-white navbar-light"
+  >
+    <div style="width: 100%" class="d-flex justify-content-between lidNavbar">
+      <div>
+        <ul class="navbar-nav d-flex flex-wrap">
+          {{#if lids}}
+            {{#each lids}}
+              <li class="nav-item d-none d-sm-inline-block">
+                <a
+                  style="font-size: 17px; font-weight:600; margin-left: 15px"
+                  href="/lids/lidCategory/{{id}}"
+                  class="nav-link"
+                >{{name}}<span
+                    class="badge navbar-badge"
+                    style="font-weight: 900; font-size:  12px;"
+                  >{{count}}</span></a>
+              </li>
+            {{/each}}
+          {{else}}
+            <p>Нет категорий!</p>
+          {{/if}}
+        </ul>
+        <ul class="navbar-nav d-flex flex-wrap">
+          <li class="nav-item d-none d-sm-inline-block">
+            <a
+              style="font-weight:600; margin-left: 15px; color: #646464; font-weight: 400; font-size: 15px; padding: 0 1.5rem; display: flex;align-items: center;background: #e3e3e3;border-radius: 7px; height: 35px;opacity: 0.9;padding-left: 15px;"
+              href="/lids/today"
+              class="nav-link"
+            ><i class="far fa-bell mr-1"></i>
+              Сегодня<span
+                class="badge navbar-badge ml-1"
+                style="font-weight: 900; font-size:12px;padding-left: 4.5px;padding-top: 3px;background: #787a91;color: #e3e3e3; margin-bottom: 5px;"
+              >{{todayLength}}</span></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a
+              style=" font-weight:600; margin-left: 10px; color: #646464; font-weight: 400;  padding: 0 1.5rem; display: flex;align-items: center;background: #e3e3e3;border-radius: 7px; height: 35px;opacity: 0.9;padding-left: 15px;"
+              href="/lids/tomorrow"
+              class="nav-link"
+            ><i class="far fa-thumbtack mr-1"></i>
+              Завтра<span
+                class="badge navbar-badge ml-1"
+                style="font-weight: 900; font-size:12px;padding-left: 5px;padding-top: 3px;padding-right: 5px; margin-left: 5px;background: #787a91;color: #e3e3e3; margin-bottom: 5px;"
+              >{{tomorrowLength}}</span></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a
+              style="font-size: 17px; font-weight:600; margin-left: 10px; color: #646464; font-weight: 400; font-size: 15px; padding: 0 1.5rem; display: flex;align-items: center;background: #e3e3e3;border-radius: 7px; height: 35px;opacity: 0.9;padding-left: 15px;"
+              href="/lids/fire"
+              class="nav-link"
+            ><i class="far fa-fire mr-1"></i>
+              Просрочено<span
+                class="badge navbar-badge ml-1"
+                style="font-weight: 900; font-size:12px;padding-left: 5px;padding-right: 5px; padding-top: 3px; margin-left: 5px;background: #787a91;color: #e3e3e3; margin-bottom: 5px;"
+              >{{fireLength}}</span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="addLidCategory">
+          {{#iftr isadmin ismanager}}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="/lids/lidCategory"
+                style="margin-bottom: 10px; padding-top: 0;"
+              >
+                <i class="far fa-plus-circle" style="font-size:  33px;"></i>
+              </a>
+            </li>
+          {{/iftr}}
+        </ul>
+      </div>
+    </div>
+    <div>
+    </div>
+  </nav>
+  {{#iftr isadmin ismanager}}
+    <section class="content tugma addLidModal">
+      <div class="">
+        <button
+          type="button"
+          style="position: absolute; right: 6px;top: 45px; border-radius: 0; border: none; background-color: #787a91; color: #f3f3f3; box-shadow: 0 0 10px #ccc;"
+          class="btn btn-default newLidBtn"
+          data-toggle="modal"
+          data-target="#modal-xl"
+          style="z-index: 0;"
+        >
+          Добавить лида
+        </button>
+      </div>
+      <div
+        class="modal fade"
+        id="modal-xl"
+        style="display: none;"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-xl">
+          <div
+            class="modal-content"
+            style="border: none; border-radius: 0; background-color: #f9f9f9;"
+          >
+            <div class="modal-header" style="border: none;">
+              <h4 class="modal-title">Новый лид</h4>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/lids" method="POST">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="name">ФИО</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="name"
+                          id="name"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="num1">Телефон</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="num1"
+                          id="num1"
+                          placeholder="+998"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="status">Откуда нашли</label>
+                        <select
+                          name="found"
+                          class="form-control select2bs4 select2-hidden-accessible"
+                          style="width: 100%;"
+                          data-select2-id="17"
+                          tabindex="-1"
+                          aria-hidden="true"
+                          id="status"
+                        >
+                          <option
+                            selected="selected"
+                            data-select2-id="19"
+                          >Telegram</option>
+                          <option>Instagram</option>
+                          <option>Facebook</option>
+                          <option>Recommended</option>
+                          <option>другой источник</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="status">Статус</label>
+                        <select
+                          name="categoryId"
+                          class="form-control select2bs4 select2-hidden-accessible"
+                          style="width: 100%;"
+                          data-select2-id="17"
+                          tabindex="-1"
+                          aria-hidden="true"
+                          id="status"
+                        >
+                          {{#each lids}}
+                            <option
+                              value="{{_id}}"
+                              id="{{_id}}"
+                            >{{name}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="num2">Телефон(не обязательно)</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="num2"
+                          id="num2"
+                          placeholder="+998"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="company"
+                          name="company"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="comment">Комментарий</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="comment"
+                          name="comment"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div
+                        class="card card-light collapsed-card"
+                        style="border: none; border-radius: 0; box-shadow: 0 0px 15px #ccc;"
+                      >
+                        <div
+                          style="background: #646464;border-radius: 0; border:none;"
+                          class="card-header"
+                        >
+                          <div style="width:100%" class="card-tools">
+                            <button
+                              type="button"
+                              class="btn"
+                              style="width:100%"
+                              data-card-widget="collapse"
+                            >
+                              <h3
+                                style="color: #fff;"
+                                class="card-title"
+                              >Заметка</h3>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="card-body" style="display: none;">
+                          <div class="form-group">
+                            <label>Дата:</label>
+                            <div
+                              class="input-group date"
+                              id="reservationdate"
+                              data-target-input="nearest"
+                            >
+                              <input
+                                type="datetime"
+                                name="date"
+                                class="form-control datetimepicker-input"
+                                data-target="#reservationdate"
+                              />
+                              <div
+                                class="input-group-append"
+                                data-target="#reservationdate"
+                                data-toggle="datetimepicker"
+                              >
+                                <div class="input-group-text"><i
+                                    class="fa fa-calendar"
+                                  ></i></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="note">Заметки</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="note"
+                              id="note"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button
+                    type="submit"
+                    class="btn btn-block btn-success btn-lg createBtn"
+                  >Добавить</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{/iftr}}
+</div>
+<style>
+  @media (max-width: 575px) { .newLidBtn { top: 14px !important; left: 20px
+  !important; } .far.fa-plus-circle { font-size: 31px !important; } }
+</style>

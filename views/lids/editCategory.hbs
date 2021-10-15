@@ -1,0 +1,38 @@
+<div class="content addLidModal">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div
+          class="card card-primary"
+          style="background-color: #f9f9f9;border: none; border-radius: 0; box-shadow: 0 0 10px #ccc;"
+        >
+          <form action="/lids/lidCategory/add" method="POST">
+            <div class="card-body">
+              <div class="form-group">
+                <label style="color: #646464" for="name">Название категория</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Category name"
+                  name="name"
+                  value="{{category.name}}"
+                />
+              </div>
+            </div>
+            <div
+              class="card-footer"
+              style="background-color: #f9f9f9;border: none; border-radius: 0;"
+            >
+              <button
+                type="submit"
+                class="btn createBtn"
+                style="background: #646464; color: #fff"
+              >Изменить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

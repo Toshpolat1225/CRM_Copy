@@ -1,0 +1,188 @@
+<aside class="main-sidebar sidebar-primary elevation-4">
+  <div class="brand-link brandItem">
+    <span class="brandLink">
+      <i class="fal fa-rocket brand-image img-circle elevation-3"></i>
+    </span>
+    <a class="brand-text brandLogo" href="/">
+      <img src="https://changeit.uz/images/logo.png" alt="png" />
+    </a>
+  </div>
+  <div class="sidebar">
+    <nav class="mt-2 sidebarNav">
+      <ul
+        class="nav asideMenu nav-pills nav-sidebar flex-column"
+        data-widget="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <li class="nav-item">
+          <a href="/workers" class="nav-link">
+            <i class="fal fa-users"></i>
+            <p>Все сотрудники</p>
+          </a>
+        </li>
+        {{#unless isstudent}}
+          {{#iftr isadmin ismanager}}
+            <li class="nav-item">
+              <a href="/price/addPrice/add" class="nav-link">
+                <i class="fal fa-usd-square"></i>
+                <p>Добавить услуги</p>
+              </a>
+            </li>
+          {{/iftr}}
+          <li class="nav-item">
+            <a href="/price" class="nav-link">
+              <i class="fal fa-usd-square"></i>
+              <p>Все услуги</p>
+            </a>
+          </li>
+          {{#iftr isadmin ismanager}}
+            <li class="nav-item">
+              <a href="/lids" class="nav-link">
+                <i class="fal fa-user-tie"></i>
+                <p>
+                  Лиды
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/salary/add" class="nav-link">
+                <i class="fal fa-dollar-sign"></i>
+                <p>Добавить зарплату</p>
+              </a>
+            </li>
+          {{/iftr}}
+          <li class="nav-item">
+            <a href="/salary" class="nav-link">
+              <i class="fal fa-dollar-sign"></i>
+              <p>Зарплата</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/projects" class="nav-link">
+              <i class="fal fa-project-diagram"></i>
+              <p>Проекты</p>
+            </a>
+          </li>
+          {{#iftr isadmin ismanager}}
+            <li class="nav-item">
+              <a href="/projects/add" class="nav-link">
+                <i class="fal fa-project-diagram"></i>
+                <p>Создать проект</p>
+              </a>
+            </li>
+          {{/iftr}}
+          {{#if isadmin}}
+            <li class="nav-item">
+              <a href="/workers/add" class="nav-link">
+                <i class="fal fa-user-plus"></i>
+                <p>Добавить сотрудника</p>
+              </a>
+            </li>
+          {{/if}}
+          {{#iftr isadmin ismanager}}
+            <li class="nav-item">
+              <a href="/library/add" class="nav-link">
+                <i class="fal fa-books-medical"></i>
+                <p>Создать библиотеку</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/lesson/add" class="nav-link">
+                <i class="fal fa-tasks"></i>
+                <p>Добавить урок</p>
+              </a>
+            </li>
+          {{/iftr}}
+          {{#iftr isadmin ismanager}}
+            <li class="nav-item">
+              <a href="/trainees/add" class="nav-link">
+                <i class="fal fa-tasks-alt"></i>
+                <p>Создать проект для ст.</p>
+              </a>
+            </li>
+          {{/iftr}}
+        {{/unless}}
+        <li class="nav-item">
+          <a href="/trainees" class="nav-link">
+            <i class="fal fa-tasks-alt"></i>
+            <p>Проекты стажеров</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/library" class="nav-link">
+            <i class="fal fa-books"></i>
+            <p>Библиотека</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/payment/daily" class="nav-link">
+            <i class="fal fa-tasks-alt"></i>
+            <p>Ежедневный платеж</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/payment/monthly" class="nav-link">
+            <i class="fal fa-tasks-alt"></i>
+            <p>Ежемесячный платеж</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/payment/all/statistic" class="nav-link">
+            <i class="fal fa-tasks-alt"></i>
+            <p>Общие платежи</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/teacherGroupStudent/teachers/add" class="nav-link">
+            <i class="fal fa-chalkboard-teacher"></i>
+            <p>
+              Teacher Create
+            </p>
+          </a>
+       
+        </li>
+        <li class="nav-item">
+          <a href="/teacherGroupStudent/groups/add" class="nav-link">
+            <i class="fal fa-users"></i>
+            <p>
+              Group Create
+            </p>
+          </a>
+         
+        </li>
+        <li class="nav-item">
+          <a href="/teacherGroupStudent/students/add" class="nav-link">
+            <i class="fal fa-user"></i>
+            <p>
+              Student Create
+            </p>
+          </a>
+        
+        </li>
+        <li class="nav-item">
+          <a href="/study" class="nav-link">
+            <i class="fal fa-books-medical"></i>
+            <p>Уроки</p>
+          </a>
+        </li>
+
+      </ul>
+      <ul
+        class="nav asideMenu nav-pills nav-sidebar flex-column"
+        data-widget="treeview"
+        role="menu"
+        style="margin-top: auto;"
+        data-accordion="false"
+      >
+        <li class="nav-item">
+          <a href="/auth/logout" class="nav-link">
+            <i class="fal fa-sign-out"></i>
+            <p>Выйти</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

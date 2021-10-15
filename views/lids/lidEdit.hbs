@@ -1,0 +1,182 @@
+<div class="content addLidModal">
+  <div class="container-fluid">
+    <div class="card-body">
+      <form action="/lids/edit/{{lidForms._id}}" method="POST">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">ФИО</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  required
+                  value="{{lidForms.name}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="num1">Телефон</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="num1"
+                  id="num1"
+                  placeholder="+998"
+                  required
+                  value="{{lidForms.num1}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="status">Откуда нашли</label>
+                <select
+                  name="found"
+                  class="form-control select2bs4 select2-hidden-accessible"
+                  style="width: 100%;"
+                  data-select2-id="17"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  id="status"
+                  value="{{lidForms.found}}"
+                >
+                  <option
+                    selected="selected"
+                    data-select2-id="19"
+                  >Telegram</option>
+                  <option>Instagram</option>
+                  <option>Facebook</option>
+                  <option>Recommended</option>
+                  <option>Другой источник</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="status">Статус</label>
+                <select
+                  name="categoryId"
+                  class="form-control select2bs4 select2-hidden-accessible"
+                  style="width: 100%;"
+                  data-select2-id="17"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  id="status"
+                  value="{{lidForms.status}}"
+                >
+                  {{#each lids}}
+                    <option value="{{_id}}" id="{{_id}}">{{name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="num2">Телефон</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="num2"
+                  id="num2"
+                  placeholder="+998"
+                  value="{{lidForms.num2}}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="company">Компания</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="company"
+                  name="company"
+                  placeholder="company"
+                  required
+                  value="{{lidForms.company}}"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="comment">Комментарий</label>
+                <input
+                  type="message"
+                  class="form-control"
+                  id="comment"
+                  name="comment"
+                  placeholder="Comment"
+                  required
+                  value="{{lidForms.comment}}"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div
+                class="card card-light collapsed-card"
+                style="border-radius: 0; border: none; box-shadow: 0 0 10px #ccc;"
+              >
+                <div
+                  class="card-header"
+                  style="border-radius: 0; border: none; background: #646464;"
+                >
+                  <div style="width:100%" class="card-tools">
+                    <button
+                      type="button"
+                      class="btn"
+                      style="width:100%"
+                      data-card-widget="collapse"
+                    >
+                      <h3 style="color: #fff;" class="card-title">Заметка</h3>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Дата:</label>
+                    <div
+                      class="input-group date"
+                      id="reservationdate"
+                      data-target-input="nearest"
+                    >
+                      <input
+                        type="text"
+                        name="date"
+                        class="form-control datetimepicker-input"
+                        data-target="#reservationdate"
+                        value="{{lidForms.date}}"
+                      />
+                      <div
+                        class="input-group-append"
+                        data-target="#reservationdate"
+                        data-toggle="datetimepicker"
+                      >
+                        <div class="input-group-text"><i
+                            class="fa fa-calendar"
+                          ></i></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="note">Заметки</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="note"
+                      id="note"
+                      placeholder="Заметка"
+                      value="{{lidForms.note}}"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <button
+            type="submit"
+            class="btn btn-block btn-success btn-lg createBtn"
+          >Изменить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="card studyCard">
+ 
+  <div class="card-body p-0">
+    <table class="table table-striped">
+      <thead>
+        <tr class=" study-table-header">
+          <th style="width: 1%">
+            №
+          </th>
+          <th style="width: 20%" >
+            Учители 
+          </th>
+          <th style="width: 30%" >
+            Профессия
+          </th>
+          <th style="width: 10%" >
+            Зарплата
+          </th>
+          <th  style="width: 20%">
+            Номер
+          </th>
+          <th style="width: 10%">
+            Редактировать
+          </th>
+
+          <th class="projectTableBtn" style="width: 20%">
+          </th>
+        </tr>
+      </thead>
+        <tbody>
+        {{#each teachers}}
+            <tr style="background: transparent;" class="teacher-table">
+            <td class="lNum" style="width: 1%">1.</td>
+            <td style="width: 20%"><a class="teacher-name-link" href="/study/teachers/{{id}}">{{name}}</a></td>
+            <td style="width: 20%">{{job}}</td>
+            <td style="width: 20%"><p class="price teacher-salary">{{salary}}</p></td>
+            <td style="width: 20%">{{phone}}</td>
+            <td style="width: 19%">
+                <div class="icons" style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="/teacherGroupStudent/teachers/delete/{{_id}}" style="color: #374045; font-size: 20px;"><i class="fal fa-times"></i></a>
+                    <a href="/teacherGroupStudent/teachers/edit/{{_id}}" style="color: #374045; font-size: 18px;"><i class="fal fa-edit"></i></a>
+                  </div>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      
+    </table>
+    
+  </div>
+</div>
+<div class="archive_action d-flex justify-content-end">
+      <a href="/study/archieve/push" class="btn btn-dark archieve_btn" style="margin-right: 60px;">Archieve</a>
+    </div>
+
+
+<script>
+  document.querySelectorAll('.lNum').forEach((c,i) => c.innerHTML = i + 1 + '.'
+  )
+</script>

@@ -1,0 +1,178 @@
+.dailyMenu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dailyMenu .menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.dailyMenu .text {
+  margin-bottom: 0;
+}
+
+.dailyMenu .time {
+  opacity: 0.63;
+}
+
+.dailyMenu .icons {
+  display: flex;
+  align-items: center;
+}
+
+.dailyMenu .icons .fa-times {
+  margin-top: 4px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.dailyMenu .icons i {
+  font-size: 16px;
+  color: #787a91;
+}
+
+.dailyMenu .itemLeft {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.dailyMenu .itemLeft strong {
+  margin-right: 30px;
+}
+
+.expenseMenu {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.expenseMenu .menuItem {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.expenseMenu .itemLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.expenseMenu .icons {
+  display: flex;
+  align-items: center;
+}
+
+.expenseMenu .icons a:first-child {
+  margin-top: 4px;
+  margin-right: 15px;
+}
+
+.expenseMenu .icons a:first-child i {
+  font-size: 20px;
+}
+
+.expenseMenu .icons i {
+  font-size: 16px;
+  color: #787a91;
+}
+
+.expenseMenu .text {
+  margin-bottom: 0;
+  margin-left: 50px;
+}
+
+.expenseMenu .time {
+  opacity: 0.63;
+}
+
+.monthMenu {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 30px;
+  box-shadow: 0 0px 15px #ccc;
+}
+
+.monthMenu .monthItem {
+  padding: 15px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #dee2e6;
+}
+
+.monthMenu .monthItem:first-child {
+  border-top: none;
+}
+
+.monthMenu .monthItem p {
+  width: 15%;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.monthMenu .monthItem .group {
+  width: 9%;
+}
+
+.monthMenu .monthItem span {
+  display: inline-block;
+  width: 2%;
+}
+
+.monthMenu .monthItem strong {
+  display: flex;
+  justify-content: flex-start;
+  width: 8%;
+}
+
+.monthMenu .aboutIncm {
+  opacity: 0.63;
+}
+
+.monthMenu .monthMenu .icons {
+  display: flex;
+}
+
+.monthMenu .icons a:first-child {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 22px;
+}
+
+.monthMenu .icons a:first-child i {
+  font-size: 20px;
+}
+
+.monthMenu .icons i {
+  font-size: 16px;
+  color: #787a91;
+}
+
+.totalIncome,
+.totalExpense {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.totalIncome h3,
+.totalExpense h3 {
+  margin-bottom: 0;
+  font-size: 22px;
+  margin-left: 6px;
+}

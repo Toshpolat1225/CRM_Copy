@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12">
+      <div class="card person_profile">
+        <div class="card-header cardHeader">
+          <h3 class="card-title">Сотрудник</h3>
+        </div>
+        <div class="card-body box-profile">
+          <div class="row flex-column flex-md-row justify-content-center">
+            <div
+              class="col-sm-12 col-md-5 d-flex flex-column justify-content-center"
+            >
+              <div class="user_worker d-flex align-items-center flex-column flex-sm-row">
+                <div class="worker_pic">
+                  <img
+                    class="worker_pic_ava"
+                    src="/images/{{worker.avatar}}"
+                    alt="User profile picture"
+                  />
+                </div>
+                <div class="workerInfo" >
+                  <h3
+                    class="profile-username text-center"
+                    style="font-weight: 500; color: #646464;font-size:30px ;"
+                  >{{worker.fullname}}</h3>
+                  <p class="text-muted text-center">{{worker.job}}</p>
+                </div>
+              </div>
+              <div class="worker_about_per">
+                <h4
+                  class="worker_info_title"
+                  style=" font-size: 20px;font-weight: 500; color: #646464;"
+                >О себе</h4>
+                <p class="text-muted worker_text">{{worker.about}}</p>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+              <div class="worker_contacts">
+                <span class="worker_info_span"><i
+                    class="fab fa-telegram-plane mr-1"
+                  ></i>
+                  Телеграм ссылка</span>
+                <p class="text-muted"><a
+                    style="color: cadetblue;"
+                    href="{{worker.telegram}}"
+                  >{{worker.telegram}}</a></p>
+                <span class="worker_info_span"><i class="fas fa-phone mr-1"></i>
+                  Телефон</span>
+                <p class="text-muted">+998{{worker.phone}}</p>
+                <span class="worker_info_span"><i
+                    class="fas fa-user-tag mr-1"
+                  ></i>Статус</span>
+                <p class="text-muted">{{worker.status}}</p>
+                <hr />
+                <span class="worker_info_span"><i class="fas fa-book mr-1"></i>
+                  Образование</span>
+                <p class="text-muted">
+                  {{worker.education}}
+                </p>
+                <hr />
+                <span class="worker_info_span"><i
+                    class="fas fa-map-marker-alt mr-1"
+                  ></i>
+                  Адрес</span>
+                <p class="text-muted">{{worker.address}}</p>
+                <hr />
+                <span class="worker_info_span"><i
+                    class="fas fa-pencil-alt mr-1"
+                  ></i>
+                  Навыки</span>
+                <p class="text-muted">
+                  {{worker.skills}}
+                </p>
+                <hr />
+                <span class="worker_info_span"><i
+                    class="far fa-file-alt mr-1"
+                  ></i>
+                  Заметки</span>
+                <p class="text-muted">{{worker.notes}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

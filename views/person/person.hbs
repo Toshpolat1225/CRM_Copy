@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12">
+      <div class="card  person_profile">
+        <div class="card-header cardHeader">
+          <h3 class="card-title">
+            Персональная страница</h3>
+        </div>
+        <div class="card-body box-profile">
+          <div class="row d-flex  justify-content-center ">
+            {{#if ifAdmin}}
+            <div class="col-sm-12 col-md-5 d-flex flex-column justify-content-center ">
+              <div class="user_worker d-flex align-items-center flex-column" style="border-bottom: none;">
+                <div class="worker_pic">
+                  <img class="worker_pic_ava " src="/images/{{admin.avatar}}" alt="User profile picture">
+                </div>
+                <div class="text-center" style="">
+                  <h3 class="profile-username text-center" style="font-weight: 500; color: #646464;font-size:20px ;">
+                    {{admin.name}}</h3>
+                  <p class="text-muted text-center" style="text-transform: uppercase; font-weight: 700;">
+                    {{admin.status}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-5 d-flex align-items-center ">
+              <div class="worker_contacts w-100">
+                <span class="worker_info_span"><i class="fab fa-telegram-plane mr-1"></i>
+                  Эл.почта</span>
+                <p class="text-muted">{{admin.email}}</p>
+                <hr>
+                <div class="admin_action_btn d-flex justify-content-between" style="gap: 30px">
+                  <a class="admin_btn" href="/admin/edit/{{admin._id}}">Изменить</a>
+                  <a class="admin_btn" href="/admin/delete">Удалить</a>
+                </div>
+              </div>
+              {{/if}}
+              {{#unless ifAdmin}}
+              <div class="col-sm-12 col-md-5 d-flex flex-column justify-content-center ">
+                <div class="user_worker d-flex align-items-center">
+                  <div class="worker_pic">
+                    <img class="worker_pic_ava " src="/images/{{worker.avatar}}" alt="User profile picture">
+                  </div>
+                  <div class="text-center" style="margin-left: 30px;">
+                    <h3 class="profile-username text-center" style="font-weight: 500; color: #646464;font-size:30px ;">
+                      {{#if worker.fullname}}
+                      {{worker.fullname}}
+                      {{else}}
+                      user
+                      {{/if}}
+                    </h3>
+                    <p class="text-muted text-center">{{worker.job}}</p>
+                    
+                  </div>
+                  
+                </div>
+                   <div class="admin_action_btn d-flex justify-content-between" style="gap: 30px; margin-bottom: 30px;">
+                  <a class="admin_btn" href="/workers/edit/{{worker._id}}">Изменить</a>
+                </div>
+                <div class="worker_about_per">
+                  <h4 class="worker_info_title" style=" font-size: 20px;font-weight: 500; color: #646464;">About</h4>
+                  <p class="text-muted worker_text">{{worker.about}}</p>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-5">
+                <div class="worker_contacts">
+                  <span class="worker_info_span"><i class="fab fa-telegram-plane mr-1"></i> Telegram link</span>
+                  <p class="text-muted"><a style="color: cadetblue;" href="{{worker.telegram}}">{{worker.telegram}}</a>
+                  </p>
+                  <span class="worker_info_span"><i class="fas fa-phone mr-1"></i> Phone number</span>
+                  <p class="text-muted">+998{{worker.phone}}</p>
+                  <span class="worker_info_span"><i class="fas fa-user-tag mr-1"></i>Status</span>
+                  <p class="text-muted">{{worker.status}}</p>
+                  <hr>
+                  <span class="worker_info_span"><i class="fas fa-book mr-1"></i> Education</span>
+                  <p class="text-muted">
+                    {{worker.education}}
+                  </p>
+                  <hr>
+                  <span class="worker_info_span"><i class="fas fa-map-marker-alt mr-1"></i> Address</span>
+                  <p class="text-muted">{{worker.address}}</p>
+                  <hr>
+                  <span class="worker_info_span"><i class="fas fa-pencil-alt mr-1"></i> Skills</span>
+                  <p class="text-muted">
+                    {{worker.skills}}
+                  </p>
+                  <hr>
+                  <span class="worker_info_span"><i class="far fa-file-alt mr-1"></i> Notes</span>
+                  <p class="text-muted">{{worker.notes}}</p>
+                  <hr>
+                  <span class="worker_info_span"><i class="fal fa-wallet"></i></i> Salary</span>
+                  <p class="text-muted price">{{salary.price}}</p>
+                </div>
+              </div>
+              {{/unless}}
+            </div>
+          </div>
+        </div>
+        <div class="worker_info">
+        </div>
+      </div>
+    </div>
+  </div>

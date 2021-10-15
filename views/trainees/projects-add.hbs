@@ -1,0 +1,110 @@
+<div class="createCard">
+  <form action="/trainees/add" method="POST">
+    <input type="hidden" id="projectDate" name="date" />
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <div class="card card-secondary">
+          <div class="card-header cardHeader">
+            <h3 class="card-title">Проект для стажеров</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="inputName2">Название проекта</label>
+              <input
+                type="text"
+                id="inputName2"
+                class="form-control"
+                name="name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputDescription1">Описание проекта</label>
+              <textarea
+                id="inputDescription1"
+                class="form-control"
+                rows="4"
+                required
+                name="description"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="inputStatusZ">Статус</label>
+              <select
+                id="inputStatusZ"
+                class="form-control customSelect custom-select"
+                name="status"
+              >
+                <option value="On progress">В прогрессе</option>
+                <option value="Canceled">Отменен</option>
+                <option value="Success">Успешно</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputProjectLeader">Лидер проекта</label>
+              <select
+                id="selectGroupR1"
+                class="form-control select2"
+                name="leader"
+              >
+                {{#each workers}}
+                  <option
+                    value="{{fullname}}"
+                    data-id="{{_id}}"
+                  >{{fullname}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputProjectDeadline">Дедлайн</label>
+              <input
+                type="date"
+                id="inputProjectDeadline"
+                class="form-control"
+                pattern="[0-9]{4}[0-9]{2}[0-9]{2}"
+                name="deadline"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-secondary">
+          <div class="card-header cardHeader">
+            <h3 class="card-title">Стажер</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="inputTelegram">Телеграм группа</label>
+              <input
+                type="text"
+                id="inputTelegram"
+                class="form-control"
+                name="telegram"
+                required
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary addWorker1"
+              id="addWorker"
+            >Добавить стажера</button>
+            <div class="cardBody">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5 pb-5">
+      <div class="col-12 d-flex justify-content-center">
+        <input
+          style="width: 100%;"
+          type="submit"
+          value="Создать проект"
+          class="btn btn-success float-right createBtn"
+        />
+      </div>
+    </div>
+  </form>
+</div>

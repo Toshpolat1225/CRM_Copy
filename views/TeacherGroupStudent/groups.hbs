@@ -1,0 +1,58 @@
+
+
+<section class="content">
+
+  <!-- Default box -->
+  <div class="card card-solid">
+    <div class="card-body pb-0">
+
+      {{#if groups.length}}
+
+        <div class="row">
+          {{#each groups}}
+            <div
+              class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"
+            >
+              <div class="card bg-light d-flex flex-fill">
+                <div class="card-body pt-0">
+                  <div class="row flex-column">
+
+                    <h2 class="lead"><b><a
+                          href="/teacherGroupStudent/groups/{{id}}"
+                        >{{title}}</a></b></h2>
+                    <h4 class="text-muted text-sm"><b>Time lesson: </b>
+                      {{timeLesson}}
+                    </h4>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a
+                      href="/teacherGroupStudent/groups/edit/{{id}}"
+                      class="btn btn-sm bg-teal"
+                    >
+                      <i class="far fa-edit"></i>
+                      Edit
+                    </a>
+                    <a
+                      href="/teacherGroupStudent/groups/delete/{{id}}"
+                      class="btn btn-sm btn-primary"
+                    >
+                      <i class="far fa-trash-alt"></i>
+                      Delete
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <h2>Groups is empty</h2>
+      {{/if}}
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+</section>

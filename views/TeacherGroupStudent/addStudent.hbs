@@ -1,0 +1,121 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <!-- form start -->
+          <form action="/teacherGroupStudent/students/add" method="POST">
+            <div class="card-body">
+              
+              <div class="form-group">
+                <label for="fullname">ФИ студента</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullname"
+                  placeholder="Student fullname"
+                  name="fullname"
+                />
+              </div>
+              <div class="form-group">
+                <label for="payment">Оплата студента</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="payment"
+                  placeholder="Student payment"
+                  name="payment"
+                />
+              </div>
+              <div class="form-group">
+                <label for="mark">Перекличка студента</label>
+               <div class="checkboxes" id="checkboxes" style="display: flex; flex-wrap: wrap;">
+                  <input
+                  type="checkbox"
+                  name="1"
+                />
+                <input
+                  type="checkbox"
+                  name="2"
+                />
+                <input
+                  type="checkbox"
+                  name="3"
+                />
+                <input
+                  type="checkbox"
+                  name="4"
+                />
+                <input
+                  type="checkbox"
+                  name="5"
+                />
+                <input
+                  type="checkbox"
+                  name="6"
+                />
+                <input
+                  type="checkbox"
+                  name="7"
+                />
+                <input
+                  type="checkbox"
+                  name="8"
+                />
+               
+               </div>
+               <a  class="btn btn-dark" id="checkbox_add" style="margin-top: 20px; color: #fff;"><i class="fa fa-plus"></i></a>
+              </div>
+              <div class="form-group">
+                <label for="comment">Комментарий</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="comment"
+                  placeholder="Comment"
+                  name="comment"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Группа студента</label>
+                <select name="groupId" class="form-control">
+                  {{#each groups}}
+                  <option value="{{_id}}" id="{{_id}}">{{title}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="submit" class="btn btn-create-student">Создать</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  const checkBtn = document.querySelector('#checkbox_add');
+  const checkboxes = document.querySelector('#checkboxes');
+
+
+checkBtn.addEventListener('click',()=>{
+ const checks = checkboxes.querySelectorAll('input')
+ var x = checks.length+1
+ var input = document.createElement('input');
+ input.setAttribute('type',`checkbox`)
+ input.setAttribute('name',`${x}`)
+ checkboxes.appendChild(input)
+}) 
+
+
+</script>

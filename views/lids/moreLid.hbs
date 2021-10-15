@@ -1,0 +1,41 @@
+<section class="content">
+  <div class="card">
+    {{#if lidForms}}
+      <div class="card-body row justify-content-between">
+        <div
+          class="col-md-5 text-center d-flex align-items-center justify-content-center"
+        >
+          <div class="">
+            <h2 style="color: #646464">{{lidForms.name}}
+              <strong> {{lids.status}}</strong></h2>
+            <h3 class="lead mb-5">{{lidForms.comment}}<br />
+              <a style="color: #646464" href="tel:{{lidForms.num1}}">Телефон:
+                <strong>{{lidForms.num1}}</strong></a>
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-5 d-flex flex-column justify-content-between">
+          <div class="form-group">
+            <a style="color: #646464" href="tel:{{lidForms.num2}}"><h3
+                style="color: #646464"
+              >Телефон(не обязательно): {{lidForms.num2}}</h3></a>
+          </div>
+          <div class="form-group">
+            <h3 style="color: #646464">Откуда нашли: {{lidForms.found}}</h3>
+          </div>
+          <div class="form-group">
+            <h3 style="color: #646464">Компания: {{lidForms.company}}</h3>
+          </div>
+          <div class="form-group">
+            <h3 style="color: #646464">Дата: {{lidForms.date}}</h3>
+          </div>
+          <div class="form-group">
+            <h3 style="color: #646464">Заметка: {{lidForms.note}}</h3>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <h2>Нет информации!</h2>
+    {{/if}}
+  </div>
+</section>

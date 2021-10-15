@@ -1,0 +1,189 @@
+<div class="card worker__card createCard">
+  <div class="card-header worker__card_header">
+    <h3 class="add__worker_title mb-0">Добавить работника</h3>
+  </div>
+  <div class="card-body">
+    <form action="/workers/add" method="post" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <input
+              type="text"
+              id="fullname"
+              class="form-control"
+              placeholder="ФИО"
+              name="fullname"
+            />
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="Эл.почта"
+              required
+            />
+            <div class="input-group-append m-0">
+              <div
+                class="input-group-text"
+                style="border-radius: 0; box-shadow: 0px 0px 4px 1px #ccc; border:none; background: #f9f9f9;"
+              >
+                <span class="fal fa-envelope" style="color: #646464;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Пароль"
+              required
+            />
+            <div class="input-group-append m-0">
+              <div
+                class="input-group-text"
+                style="border-radius: 0; box-shadow: 0px 0px 4px 1px #ccc; border:none; background: #f9f9f9;"
+              >
+                <span class="fal fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="confirm"
+              placeholder="Пароль"
+              required
+            />
+            <div class="input-group-append m-0">
+              <div
+                class="input-group-text"
+                style="border-radius: 0; box-shadow: 0px 0px 4px 1px #ccc; border:none; background: #f9f9f9;"
+              >
+                <span class="fal fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="inputClientCompany"
+              class="form-control"
+              placeholder="Профессия"
+              name="job"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="inputDescription"
+              class="form-control"
+              placeholder="Все о работнике"
+              rows="4"
+              name="about"
+              style="resize: none;"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="address"
+              class="form-control"
+              placeholder="Адрес"
+              name="address"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="number"
+              id="phone"
+              minlength="8"
+              min="1"
+              placeholder="Телефон"
+              class="form-control"
+              name="phone"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="education"
+              class="form-control"
+              placeholder="Образование"
+              name="education"
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <input
+              type="text"
+              id="skills"
+              class="form-control"
+              placeholder="Навыки"
+              name="skills"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="notes"
+              class="form-control"
+              rows="4"
+              placeholder="Заметки"
+              name="notes"
+              style="resize: none;"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <div class="custom-file">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="avatar"
+                name="avatar"
+              />
+              <label
+                class="custom-file-label fileLabel"
+                for="avatar"
+              >Аватар</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="inputClientCompany"
+              class="form-control"
+              placeholder="Телеграм"
+              name="telegram"
+            />
+          </div>
+          <div class="form-group">
+            <select
+              id="inputStatus"
+              class="form-control custom-select"
+              name="status"
+            >
+              <option value="Worker" >Рабочий</option>
+              <option value="Student" selected>Стажер</option>
+              <option value="Project manager">Проект менеджер</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3 pb-5">
+        <div class="col-12 d-flex justify-content-center">
+          <input
+            style="width: 100%;"
+            type="submit"
+            value="Добавить"
+            class="btn btn-success float-right createBtn"
+          />
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

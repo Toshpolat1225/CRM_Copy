@@ -1,0 +1,263 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/payment.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"
+    integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<h2 style="margin-left: 30px;"># Общие платежи</h2>
+
+<div class="row">
+  <div class="col-12">
+    <div class="chartBox" style="width: 96%; margin: 50px auto; ">
+      <canvas id="myChart" style="margin-bottom: 30px;"></canvas>
+      <canvas id="myChart2" style="margin-bottom: 30px;"></canvas>
+      <canvas id="myChart3" style="margin-bottom: 30px;"></canvas>
+    </div>
+    <div class="chartBox" style="width: 90%; margin: 70px auto; ">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.bundle.js"
+      integrity="sha512-DIPwqdbQmibJAGuY6pu+8YnhD14ejjf1Zar0/+YK8IcBm1AESA4x229uUgTNAv9AY8FIMmhhl2voEUbQSSwATA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const reqUrl = "/payment/chart/statistic"
+       function sendchart(method, url){
+        return  fetch(url).then(res => res.json()).then(obj=> {
+        const labels = obj.expnsDate;
+        const data = {
+          labels: labels,
+          datasets: [{
+            label: "Tushum",
+            fill: false,
+            lineTension: 0.001,
+            backgroundColor: "rgba(255, 99, 132, 0.7)",
+            pointRadius: 6,
+            pointHitRadius: 10,
+            data: obj.expnsPayment,
+            },],
+          };
+        const option = {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+          }]
+        },
+        animation: {
+          animateScale: true
+        }
+      },
+        config = {
+          type: "bar",
+          data: data,
+          options: option,
+        };
+      var myChart = new Chart(document.getElementById("myChart"), config);
+      const labels2 = obj.incmDate;
+        const data2 = {
+        labels: labels2,
+        datasets: [{
+          label: "Chiqim",
+          fill: true,
+          lineTension: 0.001,
+          backgroundColor: "rgba(54, 162, 235, 0.7)",
+          borderColor: "rgb(255, 99, 132)",
+          borderCapStyle: "butt",
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: "miter",
+          pointBorderColor: "rgba(55, 55, 232, 0.9)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 8,
+          pointHoverBackgroundColor: "rgba(55, 55, 232, 0.1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 6,
+          pointHitRadius: 10,
+          data: obj.incmPayment,
+        },],
+      };
+      const option2 = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        animation: {
+          animateScale: true
+        }
+      },
+      config2 = {
+          type: "bar",
+          data: data2,
+          options: option2,
+        };
+      var myCharta = new Chart(document.getElementById("myChart2"), config2);
+      var tushum = 0
+      for (var i = 0; i < obj.expnsPayment.length; i++){
+        tushum = tushum + obj.expnsPayment[i]
+      }
+      var chiqim = 0
+      for (var i = 0; i < obj.incmPayment.length; i++){
+        chiqim = chiqim + obj.incmPayment[i]
+      }
+      const labels3 = ["Tushum", "Chiqim"];
+      const data3 = {
+        labels: labels3,
+        datasets: [{
+          label: "Chiqim",
+          fill: true,
+          lineTension: 0.001,
+          backgroundColor: ["rgba(255, 99, 132, 0.7)", "rgba(54, 162, 235, 0.7)"],
+          pointBorderColor: "rgba(55, 55, 232, 0.0)",
+          pointBackgroundColor: "#fff",
+          pointHoverRadius: 8,
+          pointHoverBackgroundColor: "rgba(55, 55, 232, 0.1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 6,
+          pointHitRadius: 10,
+          data: [tushum, chiqim],
+        },],
+      };
+      const option3 = {
+        animation: {
+          animateScale: true
+        }
+      },
+        config3 = {
+          type: "pie",
+          data: data3,
+          options: option3,
+        };
+      var myChart = new Chart(document.getElementById("myChart3"), config3);})}
+      sendchart("GET", reqUrl)
+    </script>
+  </div>
+  <div class="col-12" style="margin-bottom: 40px;">
+    <ol class="monthMenu">
+      <li class="monthItem">
+        <span class="text">№</span>
+        <strong class="text">Сумма (UZS)</strong>
+        <p class="text">Время добавление</p>
+        <p class="text">Описание</p>
+        <p class="text">Учитель</p>
+        <p class="text group">Группа</p>
+        <p class="text">Ученики</p>
+        <div class="icons">
+          <a href="#">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="#">
+            <i class="fal fa-edit"></i>
+          </a>
+        </div>
+      </li>
+      {{#each archiveIncome}}
+      <li class="monthItem">
+        <span class="lNum">1.</span>
+        <strong class="dailyPayment">{{payment}}</strong>
+        <p class="text">{{time}}</p>
+        <p class="text">{{description}}</p>
+        {{#if teacher}}
+        <p class="text">{{teacher}}</p>
+        {{else}}
+        <p class="aboutIncm">(расход)</p>
+        {{/if}}
+        <p class="text group">{{group}}</p>
+        <p class="text">{{student}}</p>
+        <div class="icons">
+          {{#if teacher}}
+          <a href="/payment/daily/expense/delete/{{id}}">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="/payment/daily/expense/edit/{{id}}">
+            <i class="fal fa-edit"></i>
+          </a>
+          {{else}}
+          <a href="/payment/daily/delete/{{id}}">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="/payment/daily/edit/{{id}}">
+            <i class="fal fa-edit"></i>
+          </a>
+          {{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+  <div class="col-12">
+    <ol class="monthMenu">
+      <li class="monthItem">
+        <span class="text">№</span>
+        <strong class="text">Сумма (UZS)</strong>
+        <p class="text">Время добавление</p>
+        <p class="text">Описание</p>
+        <p class="text">Учитель</p>
+        <p class="text group">Группа</p>
+        <p class="text">Ученики</p>
+        <div class="icons">
+          <a href="#">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="#">
+            <i class="fal fa-edit"></i>
+          </a>
+        </div>
+      </li>
+      {{#each archiveExpense}}
+      <li class="monthItem">
+        <span class="lNum">1.</span>
+        <strong class="dailyPayment">{{payment}}</strong>
+        <p class="text">{{time}}</p>
+        <p class="text">{{description}}</p>
+        {{#if teacher}}
+        <p class="text">{{teacher}}</p>
+        {{else}}
+        <p class="aboutIncm">(расход)</p>
+        {{/if}}
+        <p class="text group">{{group}}</p>
+        <p class="text">{{student}}</p>
+        <div class="icons">
+          {{#if teacher}}
+          <a href="/payment/daily/expense/delete/{{id}}">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="/payment/daily/expense/edit/{{id}}">
+            <i class="fal fa-edit"></i>
+          </a>
+          {{else}}
+          <a href="/payment/daily/delete/{{id}}">
+            <i class="fal fa-times"></i>
+          </a>
+          <a href="/payment/daily/edit/{{id}}">
+            <i class="fal fa-edit"></i>
+          </a>
+          {{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</div>
+
+<div style="display: flex;padding: 0 30px; padding-bottom: 30px;padding-top: 35px;">
+  <div class="totalIncome">
+    Общие расходы -
+    <h3 class="dailyPayment">{{totalIncome}}</h3>
+  </div>
+  <div class="totalExpense" style="margin-left: 35px;">
+    Общие доходы -
+    <h3 class="dailyPayment">{{totalExpense}}</h3>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.lNum').forEach((c, i) => c.innerHTML = i + 1 + '.'
+  )
+</script>

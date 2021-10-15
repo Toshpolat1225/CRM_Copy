@@ -1,0 +1,87 @@
+<body class="hold-transition login-page">
+  <style>
+    body{ background: #222; background-image: url('/images/170249.jpg');
+    background-repeat: no-repeat; background-size: cover; background-position:
+    center center; } .login_form_main{ background: #000000d0; width: 100%; }
+    input{ background: transparent !important; }
+  </style>
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-12 col-lg-8 col-xl-6">
+      <div class="form__login d-flex flex-column align-center">
+        {{#if loginError}}
+          <p class="errorAlert">{{loginError}}</p>
+        {{/if}}
+        <div class="login-box login_form_main">
+          <div class="card card-outline">
+            <div
+              class="text-center"
+              style="background-color: transparent; margin-top: 15px;"
+            >
+              <a href="https://changeit.uz/" class="h1">
+                <img src="https://changeit.uz/images/logo.png" alt="png" />
+              </a>
+            </div>
+            <div class="card-body">
+              <p class="login-box-msg" style="color: #ccc">
+                Войдите, чтобы начать сессию</p>
+              <form
+                action="/auth/login"
+                method="post"
+                class="d-flex flex-column align-items-center login_Form"
+              >
+                <div class="input-group mb-3 login_inp " >
+                  <input
+                    type="email"
+                    class="form-control"
+                    style="color: #f9f9f9;background: transparent !important; border-radius:0"
+                    name="email"
+                    placeholder="эл.почта"
+                  />
+                  <div class="input-group-append">
+                    <div
+                      class="input-group-text"
+                      style="border-radius: 0; background: transparent; color: #fff"
+                    >
+                      <span class="fal fa-envelope"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3 login_inp" >
+                  <input
+                    type="password"
+                    class="form-control"
+                    style="color: #f9f9f9;background: transparent !important; border-radius:0"
+                    name="password"
+                    placeholder="Пароль"
+                  />
+                  <div class="input-group-append">
+                    <div
+                      class="input-group-text"
+                      style="border-radius: 0; background: transparent;  color: #fff"
+                    >
+                      <span class="fal fa-lock"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="login__button d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn-primary"
+                    style="padding: 10px 20px; height: unset; margin: 0; margin-bottom: 10px; border-radius: 0; border: 1px solid #fff; background: transparent;"
+                  >Войти</button>
+                </div>
+              </form>
+              <p class="mb-0">
+                <a
+                  href="/auth/register"
+                  style="display: none;"
+                  class="text-center"
+                >Register a new membership</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,162 @@
+<div class="createCard">
+  <form action="/projects/add" method="POST">
+    <input type="hidden" id="projectDate" name="date" />
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-secondary">
+          <div class="card-header cardHeader">
+            <h3 class="card-title">Проект</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="inputName2">Название проекта</label>
+              <input
+                type="text"
+                id="inputName2"
+                class="form-control"
+                name="name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputDescription1">Описание проекта</label>
+              <textarea
+                id="inputDescription1"
+                class="form-control"
+                rows="4"
+                required
+                name="description"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="inputStatusZ">Статус</label>
+              <select id="inputStatusZ" class="form-control" name="status">
+                <option value="On progress">В прогрессе</option>
+                <option value="Canceled">Отменен</option>
+                <option value="Success">Успешно</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputClientCompany">Клиентская компания</label>
+              <input
+                type="text"
+                id="inputClientCompany"
+                class="form-control"
+                name="company"
+              />
+            </div>
+            <div class="form-group">
+
+              <label for="inputProjectLeader">Лидер проекта</label>
+              <select
+                id="inputProjectLeader"
+                class="form-control custom-select"
+                name="leader"
+              >
+                {{#each workers}}
+                  <option
+                    value="{{fullname}}"
+                    data-id="{{id}}"
+                  >{{fullname}}</option>
+                {{/each}}
+              </select>
+
+            </div>
+            <div class="form-group">
+              <label for="inputProjectDeadline">Дедлайн</label>
+              <input
+                type="date"
+                id="inputProjectDeadline"
+                class="form-control"
+                pattern="[0-9]{4}[0-9]{2}[0-9]{2}"
+                name="deadline"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-secondary">
+          <div class="card-header cardHeader">
+            <h3 class="card-title">Клиент</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="inputName4">ФИО клиента</label>
+              <input
+                type="text"
+                id="inputName4"
+                class="form-control"
+                name="clientName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputName5">Номер клиента</label>
+              <input
+                type="number"
+                id="inputName5"
+                class="form-control"
+                name="clientNumber"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputName6">Локация клиента</label>
+              <input
+                type="text"
+                id="inputName6"
+                class="form-control"
+                name="clientLocation"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputTelegram">Tелеграм группа</label>
+              <input
+                type="text"
+                id="inputTelegram"
+                class="form-control"
+                name="telegram"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-secondary">
+          <div class="card-header cardHeader">
+            <h3 class="card-title">Бюджет</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="inputEstimatedBudget7">Олаченная сумма</label>
+              <input
+                type="number"
+                id="inputEstimatedBudget7"
+                class="form-control"
+                name="totalPayment"
+                required
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary addWorker"
+              id="addWorker"
+            >Добавить сотрудника</button>
+            <div class="cardBody">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 pb-5">
+      <div class="col-12 d-flex justify-content-center">
+        <input
+          style="width: 100%;"
+          type="submit"
+          value="Создать проект"
+          class="btn btn-success float-right createBtn"
+        />
+      </div>
+    </div>
+  </form>
+</div>
